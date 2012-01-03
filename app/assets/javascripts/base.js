@@ -29,9 +29,11 @@ $(document).ready(
         $(this).parent().parent().find('li').not('.active').find('.form_login').addClass('open').slideToggle();
         $(this).parent().parent().find('li.active .form_login').slideToggle().parent().removeClass('active');
         $(this).parent().parent().find('.open').parent().addClass('active').find('.open').removeClass('open');
-        
-    
     });
     
+    $('#logo_project_form').hide();
+    $('#create_logo_project').click(function(){
+      $('#logo_project_form').slideToggle();
+    });
   
   });

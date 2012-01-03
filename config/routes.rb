@@ -1,7 +1,20 @@
 Pickapic::Application.routes.draw do
-  devise_for :designers
+  
+  
+  resources :projects do
+    resources :submissions
+  end
+ 
+  resources :home 
+  
+  devise_for :designers do
+    match '/designer' => "designer#index", :as => :designer_root
+  end
 
-  devise_for :employers
+    devise_for :employers do
+    match '/employer' => "employer#index", :as => :employer_root
+  end
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -53,7 +66,7 @@ Pickapic::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   
-  root :to => 'home#index'
+  
 
   # See how all your routes lay out with "rake routes"
 

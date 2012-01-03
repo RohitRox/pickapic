@@ -1,0 +1,21 @@
+<table id="project_table">
+  <thead><tr>
+    <th>Title</th>
+    <th>Entries</th>
+    <th>Budget</th>
+    <th>Time Remaining</th>
+  </tr></thead>
+
+  <% @projects.each do |project| %>
+  <tr>
+    <td><h3><%=link_to project.title,project_path(project) %></h3><p><%= project.description.truncate(150) %></p></td>
+    <td>34</td>
+    <td><%= project.budget %></td>
+    <td><%= project.deadline %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+

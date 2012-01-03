@@ -1,0 +1,39 @@
+<h1>Listing projects</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Budget</th>
+    <th>Deadline</th>
+    <th>Type</th>
+    <th>File type</th>
+    <th>Logo type</th>
+    <th>Color</th>
+    <th>Used for</th>
+    <th>Status</th>
+    <th>Employer</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @projects.each do |project| %>
+  <tr>
+    <td><%= project.title %></td>
+    <td><%= project.description %></td>
+    <td><%= project.budget %></td>
+    <td><%= project.deadline %></td>
+    <td><%= project.type %></td>
+    <td><%= project.file_type %></td>
+    <td><%= project.logo_type %></td>
+    <td><%= project.color %></td>
+    <td><%= project.used_for %></td>
+    <td><%= project.status %></td>
+    <td><%= project.employer %></td>
+    <td><%= link_to 'Show', project %></td>
+    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

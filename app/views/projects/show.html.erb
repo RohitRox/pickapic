@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @project.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @project.description %>
+</p>
+
+<p>
+  <b>Budget:</b>
+  <%= @project.budget %>
+</p>
+
+<p>
+  <b>Deadline:</b>
+  <%= @project.deadline %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @project.type %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @project.color %>
+</p>
+
+
+<p>
+  <b>Status:</b>
+  <%= @project.status %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', root_path %>
+<hr/>
+<% @submissions.each do |submission|%>
+<%= image_tag submission.screenshot.url(:medium) %>
+<% end %>
+
+<% if designer_signed_in? %>
+  <%=form_for([@project, Submission.new],:html=>{ :multipart => true })  do |form| %>
+
+    <%= form.file_field :screenshot %>
+    <div class="actions">
+      <%= form.submit %>
+    </div> 
+  <% end %>
+<% end %>

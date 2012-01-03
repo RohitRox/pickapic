@@ -1,0 +1,64 @@
+<div id="logo_project_form">
+<%= form_for(@project) do |f| %>
+<% if @project.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+  <ul>
+    <% @project.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :title %><br />
+  <%= f.text_field :title %>
+</div>
+<div class="field">
+  <%= f.label :description %><br />
+  <%= f.text_area :description %>
+</div>
+<div class="field">
+  <%= f.label :budget %><br />
+  <%= f.text_field :budget %>
+</div>
+<div class="field">
+  <%= f.label :color,"Prefered Color" %><br />
+  <%= f.text_area :color %>
+</div>
+<div class="field">
+  <%= f.label :deadline %><br />
+  <%= f.date_select :deadline %>
+</div>
+<div style="display:none">
+<div class="field">
+  <%= f.label :type %><br />
+  <input type="radio" name="project[type]" value='public' id="project_type_public" /><label for="project_type_public">The submitted works are visible to all</label> <br />
+  <input type="radio" name="project[type]" value='private' id="project_type_private" /><label for="project_type_private">The submitted works are private</label>
+</div>
+<div class="field">
+  <%= f.label :file_type %><br />
+  <input type="checkbox" name="project[file_type]" value='psd' id="psd_type" /><label for="psd_type">Photoshop File</label>
+  <input type="checkbox" name="project[file_type]" value='ai' id="ai_type" /><label for="ai_type">Illustartor File</label>
+  <input type="checkbox" name="project[file_type]" value='png' id="png_type" /><label for="png_type">PNG File</label>
+  <input type="checkbox" name="project[file_type]" value='jpg' id="jpg_type" /><label for="jpg_type">JPG File</label>
+</div>
+<div class="field">
+  <%= f.label :logo_type %><br />
+  <input type="checkbox" name="project[logo_type]" value='iconic' id="iconic" /><label for="iconic"> Iconic</label>
+  <input type="checkbox" name="project[logo_type]" value='textual' id="textual" /><label for="textual"> Textual</label>
+  <input type="checkbox" name="project[logo_type]" value='illustrative' id="illustrative" /><label for="illustrative"> Illustrative</label>
+</div>
+<div class="field">
+  <%= f.label :used_for %><br />
+  <%= f.text_field :used_for %>
+</div>
+</div>
+<br /><br />
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+</div>
