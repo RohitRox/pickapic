@@ -1,4 +1,8 @@
 Pickapic::Application.routes.draw do
+  devise_for :designers
+
+  devise_for :employers
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
