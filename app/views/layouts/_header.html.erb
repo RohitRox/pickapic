@@ -1,0 +1,43 @@
+<header><a href="#"><%=image_tag("logo.png")%></a>
+  <%if employer_signed_in? %>
+  <%=render "layouts/employer_info_top"%>
+  <% elsif designer_signed_in?%>
+  <%=render "layouts/designer_info_top"%> 
+  <% end %>
+</header>
+<ul id="mainNav">
+  <li><a href="#" class="active">DASHBOARD</a></li> <!-- Use the "active" class for the active menu item  -->
+  <li><a href="#help" rel="facebox">HELP</a></li>
+  <li class="right_nav" id="login_show"><a href="#">LOG IN</a>
+  <ul id="login_ul">
+  <li class="active"> 
+  <h4>Employee Login</h4>
+  <div class="form_login">
+    <%= form_for(@resource ||= Employer.new, :as => :employer, :url => registration_path(:employer)) do |f| %>
+      <div><%= f.label :email %><br />
+      <%= f.email_field :email %></div>
+      <div><%= f.label :password %><br />
+      <%= f.password_field :password %></div>
+      <div><%= f.submit "Sign in" %></div>
+    <% end %>
+    <%= link_to "Forgot your password?", new_password_path(Employer.new) %><br />
+  </div>
+  </li>
+  <li> 
+  <h4>Designer Login</h4>
+  <div class="form_login">
+    <%= form_for(@resource ||= Designer.new, :as => :designer, :url => registration_path(:designer)) do |f| %>
+      <div><%= f.label :email %><br />
+      <%= f.email_field :email %></div>
+      <div><%= f.label :password %><br />
+      <%= f.password_field :password %></div>
+      <div><%= f.submit "Sign in" %></div>
+    <% end %>
+    <%= link_to "Forgot your password?", new_password_path(Designer.new) %>
+  </div>
+  </li>
+  </ul>
+  
+  </li>
+  <li class="right_nav"><a href="#"><%=image_tag "inbox.png",:height=>'24',:width=>'24'%></a></li>
+</ul>
