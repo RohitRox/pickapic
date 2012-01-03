@@ -26,7 +26,7 @@ body {
   border-radius: 4px 4px 4px 4px;
   box-shadow:0px 0px 2px #666;
   margin: 0 0 30px 0;
-  background: url(../img/top-menu-bg.gif) no-repeat left top; 
+  background: url(../img/top-menu-bg.gif) no-repeat left top;
   /* We used a background image making the thick border and the thin one to keep the html structure simple */
 }
 
@@ -258,7 +258,7 @@ table tr:nth-child(even){
   line-height: 12px;
 }
 
-#main fieldset .text-long {
+.text-long {
   border: 1px solid #ddd;
   background: #fff url(../img/input-shaddow.gif) no-repeat left top;
   font: 11px Arial, Helvetica, sans-serif;
@@ -269,18 +269,18 @@ table tr:nth-child(even){
   margin: 0 10px 0 0;
 }
 
-#main fieldset .text-medium {
+.text-medium ,.form_login input[type=text],.form_login input[type=email],.form_login input[type=password]{
   border: 1px solid #ddd;
   background: #fff url(../img/input-shaddow.gif) no-repeat left top;
   font: 11px Arial, Helvetica, sans-serif;
   color: #646464;
   padding: 5px 7px;
-  width: 124px;
+  width: 222px;
   float: left;
   margin: 0 10px 0 0;
 }
 
-#main fieldset .text-small {
+.text-small {
   border: 1px solid #ddd;
   background: #fff url(../img/input-shaddow.gif) no-repeat left top;
   font: 11px Arial, Helvetica, sans-serif;
@@ -291,7 +291,7 @@ table tr:nth-child(even){
   margin: 0 10px 0 0;
 }
 
-#main fieldset .text-long:focus, 
+#main fieldset .text-long:focus,
 #main fieldset .text-medium:focus,
 #main fieldset .text-small:focus,
 #main fieldset textarea:focus { background: #fdfcf6 url(../img/input-shaddow-hover.gif) no-repeat left top; }
@@ -437,7 +437,7 @@ table.small tr:last-child{
   display:none;
 }
 .logo_img:hover .magnify{
-  -moz-transition-duration: 4s;  
+  -moz-transition-duration: 4s;
   -moz-transition-delay: 2s;
   display:block;
 }
@@ -459,10 +459,10 @@ table.small tr:last-child{
   -ms-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
   opacity:.6;
-  -webkit-transform: scale(.8);
+  -webkit-transform: scale(.9);
   -webkit-transition-timing-function: ease-out;
   -webkit-transition-duration: 300ms;
-  -moz-transform: scale(.8);
+  -moz-transform: scale(.9);
   -moz-transition-timing-function: ease-out;
   -moz-transition-duration: 300ms;
 }
@@ -491,12 +491,66 @@ table.small tr:last-child{
   font-size:18px;
 }
 .form_login div{
-  margin:14px 0px;
+  margin:8px 0px;
+  float:left;
+}
+#main .form_login div{
+  margin:12px 0px;
   color:#eaeaea;
 }
 .form_login div label{
   line-height:20px;
+  color:#ddd;
 }
 .form_login a{
   color:#09c !important;
 }
+.form_login a.forgot{
+ background: none repeat scroll 0 0 transparent;
+ float: right;
+ height: 35px !important;
+ padding: 6px 10px !important;
+}
+.form_login a.forgot:hover{
+background:none !important;
+color:#eaeaea;
+}
+form div{
+line-height: 22px;
+    margin: 10px 2px;
+}
+#main label{
+color:#333;
+font-size:14px;
+}
+input[type="text"],input[type="email"],input[type="password"]{
+    padding: 7px;
+    border: solid 1px #bbb;
+    outline: 0;
+    font: normal 13px/100% Verdana, Tahoma, sans-serif;
+    background: #FFFFFF url('bg_form.png') left top repeat-x;
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+}
+#main  a.form{
+    color: #999999;
+    float: left;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 4px;
+    padding: 2px 8px;
+    border: 1px solid;
+}
+#main form a.form:hover{
+color:#666;
+}
+#submit_logo{
+border: 1px solid #999;
+float: left;
+margin: 4px 20px;
+padding: 4px;
+}
+

@@ -2,13 +2,13 @@
   <%if employer_signed_in? %>
     <%=render "layouts/employer_info_top"%>
   <% elsif designer_signed_in?%>
-    <%=render "layouts/designer_info_top"%> 
+    <%=render "layouts/designer_info_top"%>
   <% end %>
 </header>
 <ul id="mainNav">
   <li><a href="#" class="active">DASHBOARD</a></li> <!-- Use the "active" class for the active menu item  -->
   <li><a href="#help" rel="facebox">HELP</a></li>
-  
+
   <% if designer_signed_in? %>
     <li class="right_nav"><%= link_to "LOG OUT", destroy_designer_session_path, :method => 'delete' %>
   <% elsif employer_signed_in? %>
@@ -16,9 +16,9 @@
   <% else %>
     <li class="right_nav" id="login_show"><a href="#">LOG IN</a>
   <% end %>
-  
+
   <ul id="login_ul">
-  <li class="active"> 
+  <li class="active">
   <h4>Employee Login</h4>
   <div class="form_login">
     <%= form_for(@resource ||= Employer.new, :as => :employer, :url => session_path(:employer)) do |f| %>
@@ -28,10 +28,10 @@
       <%= f.password_field :password %></div>
       <div><%= f.submit "Sign in" %></div>
     <% end %>
-    <%= link_to "Forgot your password?", new_password_path(Employer.new) %><br />
+    <%= link_to "Forgot your password?", new_password_path(Employer.new),:class=>"forgot" %><br />
   </div>
   </li>
-  <li> 
+  <li>
   <h4>Designer Login</h4>
   <div class="form_login">
     <%= form_for(@resource ||= Designer.new, :as => :designer, :url => session_path(:designer)) do |f| %>
@@ -41,13 +41,12 @@
       <%= f.password_field :password %></div>
       <div><%= f.submit "Sign in" %></div>
     <% end %>
-    <%= link_to "Forgot your password?", new_password_path(Designer.new) %>
+    <%= link_to "Forgot your password?", new_password_path(Designer.new),:class=>"forgot" %>
   </div>
   </li>
   </ul>
-  
+
   </li>
   <li class="right_nav"><a href="#"><%=image_tag "inbox.png",:height=>'24',:width=>'24'%></a></li>
 </ul>
-
 
