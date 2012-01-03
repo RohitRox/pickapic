@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120103034814) do
+ActiveRecord::Schema.define(:version => 20120103040308) do
 
   create_table "designers", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",       :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -26,14 +26,18 @@ ActiveRecord::Schema.define(:version => 20120103034814) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
+    t.string   "prestige",                              :default => "Rookie"
+    t.float    "earning",                               :default => 0.0
+    t.float    "rating",                                :default => 0.0
   end
 
   add_index "designers", ["email"], :name => "index_designers_on_email", :unique => true
   add_index "designers", ["reset_password_token"], :name => "index_designers_on_reset_password_token", :unique => true
 
   create_table "employers", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",            :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",            :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -44,6 +48,9 @@ ActiveRecord::Schema.define(:version => 20120103034814) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
+    t.string   "prestige",                              :default => "Just Joined"
+    t.float    "credit",                                :default => 1000.0
   end
 
   add_index "employers", ["email"], :name => "index_employers_on_email", :unique => true
