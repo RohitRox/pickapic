@@ -7,6 +7,7 @@ Pickapic::Application.routes.draw do
   
   resources :submissions, :only => [:rating] do 
     match '/rating/:rate_id' => "submissions#rating", :as => :rating, :via => :put
+    match '/reward' => "submissions#reward", :as => :reward, :via => :put
     resources :comments
   end
  

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120104084241) do
+ActiveRecord::Schema.define(:version => 20120104114024) do
 
   create_table "comments", :force => true do |t|
     t.text     "context"
@@ -69,9 +69,7 @@ ActiveRecord::Schema.define(:version => 20120104084241) do
 
   create_table "messages", :force => true do |t|
     t.text     "content"
-    t.integer  "to"
-    t.integer  "from"
-    t.boolean  "state",       :default => false
+    t.boolean  "state"
     t.integer  "employer_id"
     t.integer  "designer_id"
     t.datetime "created_at"
@@ -109,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20120104084241) do
     t.string   "screenshot_content_type"
     t.integer  "screenshot_file_size"
     t.datetime "screenshot_updated_at"
+    t.boolean  "approve",                 :default => false
   end
 
   add_index "submissions", ["designer_id"], :name => "index_submissions_on_designer_id"

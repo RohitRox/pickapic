@@ -23,7 +23,7 @@
     <td><%= project.title %></td>
     <td><%= project.description %></td>
     <td><%= project.budget %></td>
-    <td><%= project.deadline %></td>
+    <td><%=distance_of_time_in_words(project.deadline,Time.now) %></td>
     <td><%= project.project_type %></td>
     <td><%= project.file_type %></td>
     <td><%= project.logo_type %></td>

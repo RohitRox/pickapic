@@ -4,11 +4,16 @@
 <br />
 <%= image_tag @submission.screenshot.url(:original) %>
 <br />
+
+<%=link_to "Reward This Design",submission_reward_path(@submission) ,:class=>"button",:method=>:put,:remote=>true%>
+
+<hr />
 <% @comments.each do |comment| %>
 <h3><%=comment.employer.username%> :</h3>
 <p><%=comment.context%></p>
 <% end %>
 <br />
+
 <h2>Comment to this submission</h2>
 <div id="comments_form">
   <%= form_for([@submission, Comment.new]) do |f| %>

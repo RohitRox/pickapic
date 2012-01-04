@@ -1,7 +1,7 @@
 class SubmissionsController < ApplicationController
   
   include ApplicationHelper
-  before_filter :authenticate_designer!,:except=>[:rating]
+  before_filter :authenticate_designer!,:except=>[:rating, :reward]
   before_filter :get_messages
   
   def create
@@ -28,6 +28,32 @@ class SubmissionsController < ApplicationController
         @designer = @submission.designer
         @designer.messages.create(:content=>"Your work has been rated a "+@submission.rating.to_s+" Star for <a href='"+ project_path(@project) +"'>"+@project.title+"</a>")
     end
+  end
+  
+  def reward
+      @submission = Submission.find(params[:submission_id])
+    if @submission.project.employer == current_employer
+    @submission.project.status = "Rewarded"
+    @submission.approve = true
+    @submission.designer.earning += @submission.project.budget
+    @submission.project.employer.credit -= @submission.project.budget
+    @submission.designer.messages.create(:content=>"Congratulation ! Your work for <a href='"+ project_path(@project) +"'>"+@project.title+"</a> has been approved. You have been rewarded <%=@submission.project.budget%>")
+    @submission.project.save
+    @submission.designer.save
+    @submission.project.employer.save
+    @notice='The Design Has Been Rewarded and The Project has been closed !'
+    respond_to do |format|
+      format.html { redirect_to submission_comments_path(@submission), notice: @notice  }
+      format.js
+    end
+  else
+    @notice='You are not authorized !'
+    respond_to do |format|
+      format.html { redirect_to submission_comments_path(@submission), notice: @notice  }
+      format.js
+    end
+  end
+  
   end
   
 end

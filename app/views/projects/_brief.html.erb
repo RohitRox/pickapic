@@ -1,0 +1,21 @@
+<h3>Project Description</h3>
+<p><%= @project.description %></p>
+<hr />
+<div class="float_right">
+  <h3>Preferred Colors</h3>
+  <p><%=@project.color %></p>
+  <h3>To Be Used For</h3>
+  <p><%=@project.used_for %></p></div>
+  <h3>File types:</h3>
+  <p>You'll need to provide your design in the following file types: <strong><%=@project.file_type %></strong></p>
+
+  <h3>Preferred logo type:</h3>
+  <% @logotype = @project.logo_type.split(",") %>
+  <ul class="logo-type">
+    <% @logotype.each do |ltype| %>
+    <li>
+      <img width="78" height="44" alt="Textual Logo" src="/images/<%=ltype %>.gif">
+      <div><%=ltype %></div>
+    </li>
+    <% end %>
+  </ul>

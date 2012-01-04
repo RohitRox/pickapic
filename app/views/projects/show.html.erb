@@ -8,95 +8,38 @@
 
   <% if designer_signed_in? %>
   <div id="submit_logo">
-  <%=form_for([@project, Submission.new],:html=>{ :multipart => true }) do |form| %>
+    <%=form_for([@project, Submission.new],:html=>{ :multipart => true }) do |form| %>
     <%= form.file_field :screenshot %>
     <div class="actions">
-    <%= form.submit %>
+      <%= form.submit %>
+    </div>
   </div>
-</div>
-<% end %>
-<% end %>
+  <% end %>
+  <% end %>
 
-<div class="float_right vital_info">
-  <table class="small">
-    <tr><td><b>Total Entries</b></td><td><b>Reward</b></td></tr>
-    <tr><td><%= @project.submissions.size %></td><td>  <%= @project.budget %></td></tr>
-  </table>
-</div>
+  <div class="float_right vital_info">
+    <table class="small">
+      <tr><td><b>Total Entries</b></td><td><b>Reward</b></td></tr>
+      <tr><td><%= @project.submissions.size %></td><td>  <%= @project.budget %></td></tr>
+    </table>
+  </div>
 </div>
 <div class="clear"></div>
 
-<div id="briefing">
-
-  <h3>Project Description</h3>
-  <p><%= @project.description %></p>
-  <hr />
-  <div class="float_right">
-    <h3>Preferred Colors</h3>
-    <p><%=@project.color %></p>
-    <h3>To Be Used For</h3>
-    <p><%=@project.used_for %></p></div>
-    <h3>File types:</h3>
-    <p>You'll need to provide your design in the following file types: <strong><%=@project.file_type %></strong></p>
-
-    <h3>Preferred logo type:</h3>
-    <% @logotype = @project.logo_type.split(",") %>
-    <ul class="logo-type">
-      <% @logotype.each do |ltype| %>
-      <li>
-        <img width="78" height="44" alt="Textual Logo" src="/images/<%=ltype %>.gif">
-        <div><%=ltype %></div>
-      </li>
-      <% end %>
-    </ul>
+  <div id="briefing">
+    <%=render "brief"%>
   </div><!--briefing -->
+  
   <div class="clear"></div>
 
   <h2>Submitted Designs:</h2>
   <br />
   <div id="project_files">
-
-    <ul id="project_list">
-      <%i=1%>
-      <% @project.submissions.each do |submission|%>
-      <li>
-        <div class="logo_header"><span class="float_right"><b><%=i%></b></span><span class="float_left">
-          <a href="<%=submission_comments_path(submission)%>"><b><%= submission.comments.size %>&nbsp;</b>Comments</span></a>
-        </div>
-        <div class="logo_img"><a href="<%=submission.screenshot.url(:original,false)%>" rel="facebox">
-          <%= image_tag submission.screenshot.url(:medium),:width=>"220",:height=>"150",:class=>"project_logo" %>
-          <img src="/images/glass.png" class="magnify" /></a>
-        </div>
-        <div class="logo_footer">
-          <span class="float_right" id="rating_block_<%=submission.id%>">
-            <% if submission.rating == nil && @project.employer == current_employer %>
-            <%= link_to "rate_it",submission_rating_path(submission,1),:class =>"rating" ,:remote=>'true',:method=>'put'%>
-            <%= link_to "rate_it",submission_rating_path(submission,2),:class =>"rating" ,:remote=>'true',:method=>'put'%>
-            <%= link_to "rate_it",submission_rating_path(submission,3),:class =>"rating" ,:remote=>'true',:method=>'put'%>
-            <%= link_to "rate_it",submission_rating_path(submission,4),:class =>"rating" ,:remote=>'true',:method=>'put'%>
-            <%= link_to "rate_it",submission_rating_path(submission,5),:class =>"rating" ,:remote=>'true',:method=>'put'%>
-            <% elsif submission.rating != nil %>
-            <% for i in 1..submission.rating %>
-            <img src="/images/star-active.png">
-            <%end%>
-            <% for i in 1..(5-submission.rating) %>
-            <img src="/images/star-inactive.png">
-            <%end%>
-            <% else %>
-            Not Rated Yet
-            <% end %>
-          </span>
-          <span class="float_left"><%= submission.designer.username %> </span></div>
-        </li>
-        <% i=i+1 %>
-        <% end %>
-
-      </ul>
-
-    </div>
+    <%=render "gallery"%>
+  </div>
 
 
-    <div class="clear"></div>
-    <hr />
-    <%= link_to 'Back', root_path %>
+  <div class="clear"></div>
+  <hr />
+  <%= link_to 'Back', root_path %>
 
