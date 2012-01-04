@@ -14,47 +14,62 @@
 
 <div class="field">
   <%= f.label :title %><br />
-  <%= f.text_field :title %>
+  <%= f.text_field :title, :placeholder => "Title for your Project" %>
 </div>
 <div class="field">
   <%= f.label :description %><br />
-  <%= f.text_area :description %>
+  <%= f.text_area :description, :placeholder => "What type of logo do you want; Description for your Project" %>
 </div>
 <div class="field">
   <%= f.label :budget %><br />
-  <%= f.text_field :budget %>
+  <%= f.text_field :budget, :placeholder => "Prize amount for this Project" %>
 </div>
 <div class="field">
   <%= f.label :color,"Prefered Color"%><br />
-  <%= f.text_area :color,:rows=>"4",:cols=>"40" %>
+  <%= f.text_area :color,:rows=>"4",:cols=>"40", :placeholder => "Desired color description for your projects" %>
 </div>
 <div class="field">
   <%= f.label :deadline %><br />
   <%= f.date_select :deadline %>
 </div>
-<div style="display:none">
 <div class="field">
-  <%= f.label :type %><br />
-  <input type="radio" name="project[type]" value='public' id="project_type_public" /><label for="project_type_public">The submitted works are visible to all</label> <br />
-  <input type="radio" name="project[type]" value='private' id="project_type_private" /><label for="project_type_private">The submitted works are private</label>
+  <%= f.label :project_type %><br />
+  <input type="radio" name="project_type" value='public' id="project_type_public" checked /><label for="project_type_public">The submitted works are visible to all</label> <br />
+  <input type="radio" name="project_type" value='private' id="project_type_private" /><label for="project_type_private">The submitted works are private</label>
 </div>
 <div class="field">
-  <%= f.label :file_type %><br />
-  <input type="checkbox" name="project[file_type]" value='psd' id="psd_type" /><label for="psd_type">Photoshop File</label>
-  <input type="checkbox" name="project[file_type]" value='ai' id="ai_type" /><label for="ai_type">Illustartor File</label>
-  <input type="checkbox" name="project[file_type]" value='png' id="png_type" /><label for="png_type">PNG File</label>
-  <input type="checkbox" name="project[file_type]" value='jpg' id="jpg_type" /><label for="jpg_type">JPG File</label>
+  <%= f.label :file_type, "Types of files you want" %><br />
+  <input type="checkbox" name="file_type[]" value='psd' id="psd_type" checked /><label for="psd_type">Photoshop File</label>
+  <input type="checkbox" name="file_type[]" value='ai' id="ai_type" checked /><label for="ai_type">Illustartor File</label>
+  <input type="checkbox" name="file_type[]" value='png' id="png_type" checked /><label for="png_type">PNG File</label>
+  <input type="checkbox" name="file_type[]" value='jpg' id="jpg_type" /><label for="jpg_type">JPG File</label>
 </div>
 <div class="field">
-  <%= f.label :logo_type %><br />
-  <input type="checkbox" name="project[logo_type]" value='iconic' id="iconic" /><label for="iconic"> Iconic</label>
-  <input type="checkbox" name="project[logo_type]" value='textual' id="textual" /><label for="textual"> Textual</label>
-  <input type="checkbox" name="project[logo_type]" value='illustrative' id="illustrative" /><label for="illustrative"> Illustrative</label>
+  <%= f.label :logo_type, "Type of logo you want to create" %><br />
+  
+  <ul class="logo-type logo_select">
+  <li>
+    <img width="78" height="44" alt="Iconic Logo" src="/images/iconic.gif">
+    <div>
+    <input type="checkbox" name="logo_type[]" value='iconic' id="iconic" checked /><label for="iconic">  Iconic </label></div>
+  </li>
+  <li>
+    <img width="78" height="44" alt="Textual Logo" src="/images/textual.gif">
+    <div>
+     <input type="checkbox" name="logo_type[]" value='textual' id="textual" checked /><label for="textual"> Textual </label></div>
+  </li>
+  <li>
+    <img width="78" height="44" alt="Illustrative Logo" src="/images/illustrative.gif">
+    <div>
+      <input type="checkbox" name="logo_type[]" value='illustrative' id="illustrative" checked /><label for="illustrative"> Illustrative </label></div>
+  </li>
+  </ul>
+
 </div>
+<div class="clear"></div>
 <div class="field">
   <%= f.label :used_for %><br />
-  <%= f.text_field :used_for %>
-</div>
+  <%= f.text_field :used_for, :placeholder => "Logo Usage ( web, print, etc...)" %>
 </div>
 <br /><br />
 <div class="actions">

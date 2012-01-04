@@ -1,0 +1,7 @@
+<% r = @submission.rating %>
+<% for i in 1..r %>
+<img src="/images/star-active.png" />
+<%end%>
+<% for i in 1..(5-r) %>
+<img src="/images/star-inactive.png" />
+<%end%>

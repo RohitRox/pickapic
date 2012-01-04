@@ -410,6 +410,7 @@ table.small tr:last-child{
   border-radius:8px;
   padding:4px;
   box-shadow: 0 0 8px #CCCCCC;
+  margin:4px 24px 4px 4px;
 }
 .logo_header{
   float:left;
@@ -506,51 +507,66 @@ table.small tr:last-child{
   color:#09c !important;
 }
 .form_login a.forgot{
- background: none repeat scroll 0 0 transparent;
- float: right;
- height: 35px !important;
- padding: 6px 10px !important;
+  background: none repeat scroll 0 0 transparent;
+  float: right;
+  height: 35px !important;
+  padding: 6px 10px !important;
 }
 .form_login a.forgot:hover{
-background:none !important;
-color:#eaeaea;
+  background:none !important;
+  color:#eaeaea;
 }
 form div{
-line-height: 22px;
-    margin: 10px 2px;
+  line-height: 22px;
+  margin: 10px 2px;
 }
 #main label{
-color:#333;
-font-size:14px;
+  color:#333;
+  font-size:14px;
 }
 input[type="text"],input[type="email"],input[type="password"],textarea{
-    padding: 7px;
-    border: solid 1px #bbb;
-    outline: 0;
-    font: normal 13px/100% Verdana, Tahoma, sans-serif;
-    background: #FFFFFF url('bg_form.png') left top repeat-x;
-    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
-    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
-    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+  padding: 7px;
+  border: solid 1px #bbb;
+  outline: 0;
+  font: normal 13px/100% Verdana, Tahoma, sans-serif;
+  background: #FFFFFF url('bg_form.png') left top repeat-x;
+  background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+  background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+  box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+  -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+  -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
 }
 #main  a.form{
-    color: #999999;
-    float: left;
-    font-size: 14px;
-    line-height: 20px;
-    margin: 4px;
-    padding: 2px 8px;
-    border: 1px solid;
+  color: #999999;
+  float: left;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 4px;
+  padding: 2px 8px;
+  border: 1px solid;
 }
 #main form a.form:hover{
-color:#666;
+  color:#666;
 }
 #submit_logo{
-border: 1px solid #999;
-float: left;
-margin: 4px 20px;
-padding: 4px;
+  border: 1px solid #999;
+  float: left;
+  margin: 4px 20px;
+  padding: 4px;
 }
-
+a.rating{
+  background:url(../../images/star-inactive.png) no-repeat center; 
+  display: block;
+  height: 24px;
+  text-indent: -100000px;
+  width: 24px;
+  float:left;
+  margin-top:-4px;
+}
+a.rating:hover{
+  background:url(../../images/star-active.png) no-repeat center; 
+}
+.logo_select li div{
+  width:92px !important;
+  text-align: center;
+}

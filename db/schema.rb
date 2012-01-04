@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120103101728) do
+ActiveRecord::Schema.define(:version => 20120104054558) do
 
   create_table "designers", :force => true do |t|
     t.string   "email",                                 :default => "",       :null => false
@@ -61,12 +61,12 @@ ActiveRecord::Schema.define(:version => 20120103101728) do
     t.text     "description"
     t.float    "budget"
     t.datetime "deadline"
-    t.string   "type"
+    t.string   "project_type"
     t.string   "file_type"
     t.string   "logo_type"
     t.text     "color"
     t.string   "used_for"
-    t.string   "status",      :default => "open"
+    t.string   "status",       :default => "open"
     t.integer  "employer_id"
     t.datetime "created_at"
     t.datetime "updated_at"

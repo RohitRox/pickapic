@@ -2,7 +2,11 @@ Pickapic::Application.routes.draw do
   
   
   resources :projects do
-    resources :submissions
+    resources :submissions 
+  end
+  
+  resources :submissions, :only => [:rating] do 
+    match '/rating/:rate_id' => "submissions#rating", :as => :rating, :via => :put
   end
  
   resources :home 

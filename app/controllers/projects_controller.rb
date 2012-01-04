@@ -40,6 +40,9 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = current_employer.projects.new(params[:project])
+    @project.project_type=params[:project_type]
+    @project.file_type=params[:file_type].join(", ")
+    @project.logo_type=params[:logo_type].join(",")
 
     respond_to do |format|
       if @project.save
@@ -47,7 +50,7 @@ class ProjectsController < ApplicationController
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to employer_root_path, notice: 'Invalid entries to fields.' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
