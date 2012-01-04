@@ -523,7 +523,7 @@ line-height: 22px;
 color:#333;
 font-size:14px;
 }
-input[type="text"],input[type="email"],input[type="password"]{
+input[type="text"],input[type="email"],input[type="password"],textarea{
     padding: 7px;
     border: solid 1px #bbb;
     outline: 0;

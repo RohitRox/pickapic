@@ -9,10 +9,8 @@ class SubmissionsController < ApplicationController
     respond_to do |format|
       if @submission.save
         format.html { redirect_to @project, notice: 'Your logo was successfully submitted.' }
-        format.json { render json: @project, status: :created, location: @project }
       else
-        format.html { render action: "new" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.html { redirect_to @project, alert: 'File was either empty or not supported format !'  }
       end
     end
   end
