@@ -1,4 +1,4 @@
-<% if @project.employer == current_employer && @project.project_type="public" %>
+<% if  @project.project_type == "public" %>
 <ul id="project_list">
   <%i=1%>
   <% @project.submissions.each do |submission|%>
@@ -38,3 +38,4 @@
 <% else %>
 <p id="notice">This is a private project !</p>
 <% end %>
+

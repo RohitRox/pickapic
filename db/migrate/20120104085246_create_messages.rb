@@ -2,7 +2,7 @@ class CreateMessages < ActiveRecord::Migration
   def change
     create_table :messages do |t|
       t.text :content
-      t.boolean :state
+      t.boolean :state,:default=>false
       t.references :employer
       t.references :designer
 
@@ -12,3 +12,4 @@ class CreateMessages < ActiveRecord::Migration
     add_index :messages, :designer_id
   end
 end
+

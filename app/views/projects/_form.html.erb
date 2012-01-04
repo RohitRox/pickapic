@@ -37,6 +37,8 @@
   <input type="radio" name="project_type" value='public' id="project_type_public" checked /><label for="project_type_public">The submitted works are visible to all</label> <br />
   <input type="radio" name="project_type" value='private' id="project_type_private" /><label for="project_type_private">The submitted works are private</label>
 </div>
+<a href="#">Add More Details</a>
+<div id="project_more_details">
 <div class="field">
   <%= f.label :file_type, "Types of files you want" %><br />
   <input type="checkbox" name="file_type[]" value='psd' id="psd_type" checked /><label for="psd_type">Photoshop File</label>
@@ -46,7 +48,7 @@
 </div>
 <div class="field">
   <%= f.label :logo_type, "Type of logo you want to create" %><br />
-  
+
   <ul class="logo-type logo_select">
   <li>
     <img width="78" height="44" alt="Iconic Logo" src="/images/iconic.gif">
@@ -64,12 +66,12 @@
       <input type="checkbox" name="logo_type[]" value='illustrative' id="illustrative" checked /><label for="illustrative"> Illustrative </label></div>
   </li>
   </ul>
-
-</div>
 <div class="clear"></div>
 <div class="field">
   <%= f.label :used_for %><br />
   <%= f.text_field :used_for, :placeholder => "Logo Usage ( web, print, etc...)" %>
+</div>
+</div>
 </div>
 <br /><br />
 <div class="actions">

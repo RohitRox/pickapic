@@ -1,11 +1,17 @@
 <h2 class="float_left"> <%= @project.title %></h2>
-<div class="float_right deadline_right"><img src="/images/deadlineIcon.jpg" width="32" height="32" alt="deadline"><b> <%=distance_of_time_in_words(@project.deadline,Time.now) %></b>
+<div class="float_right deadline_right">
+<% if get_project_state(@project) %>
+<img src="/images/deadlineIcon.jpg" width="32" height="32" alt="deadline">
+<b> <%=distance_of_time_in_words(@project.deadline,Time.now) %></b>
+<% else %>
+<p id="notice" class="float_right">The logo for this project is already rewarded and the project is closed.</p>
+<% end %>
 </div>
 <div class="clear"></div>
 <br />
 <div class="project_info">
   <a href="#" class="button float_left" id="show_brief">Brief</a>
-
+  <% if get_project_state(@project) %>
   <% if designer_signed_in? %>
   <div id="submit_logo">
     <%=form_for([@project, Submission.new],:html=>{ :multipart => true }) do |form| %>
@@ -14,6 +20,7 @@
       <%= form.submit %>
     </div>
   </div>
+  <% end %>
   <% end %>
   <% end %>
 
@@ -29,8 +36,20 @@
   <div id="briefing">
     <%=render "brief"%>
   </div><!--briefing -->
-  
+
   <div class="clear"></div>
+
+  <% if @project.status=="Rewarded"%>
+   <h2>Rewarded Design Design:</h2>
+  <br />
+  <div id="project_files">
+    <%@rewarded = @project.submissions.where(:approve=>true) %>
+    <%@rewarded.each do |logo| %>
+     <%= image_tag logo.screenshot.url(:medium),:class=>"rewarded_logo" %>
+     <% end %>
+  </div>
+  <% end %>
+
 
   <h2>Submitted Designs:</h2>
   <br />

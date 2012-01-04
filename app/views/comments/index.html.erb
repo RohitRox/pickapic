@@ -4,9 +4,11 @@
 <br />
 <%= image_tag @submission.screenshot.url(:original) %>
 <br />
-
+<% if @submission.project.status == "open" %>
 <%=link_to "Reward This Design",submission_reward_path(@submission) ,:class=>"button",:method=>:put,:remote=>true%>
-
+<% elsif @submission.approve == true %>
+<p id="notice">This is the rewarded design</p>
+<% end %>
 <hr />
 <% @comments.each do |comment| %>
 <h3><%=comment.employer.username%> :</h3>
