@@ -6,10 +6,10 @@ class CreateProjects < ActiveRecord::Migration
       t.float :budget
       t.datetime :deadline
       t.string :type
-      t.string :file_type
-      t.string :logo_type
-      t.text :color
-      t.string :used_for
+      t.string :file_type, :default => "ai, png"
+      t.string :logo_type, :default => "illustrative,iconic,textual"
+      t.text :color, :default => "Any color that look good for this design"
+      t.string :used_for, :default => "Not specified"
       t.string :status, :default=>"open"
       t.references :employer
 

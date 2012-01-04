@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120104054558) do
+ActiveRecord::Schema.define(:version => 20120104080233) do
+
+  create_table "comments", :force => true do |t|
+    t.text     "context"
+    t.integer  "employer_id"
+    t.integer  "submission_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["employer_id"], :name => "index_comments_on_employer_id"
+  add_index "comments", ["submission_id"], :name => "index_comments_on_submission_id"
 
   create_table "designers", :force => true do |t|
     t.string   "email",                                 :default => "",       :null => false
@@ -62,10 +73,10 @@ ActiveRecord::Schema.define(:version => 20120104054558) do
     t.float    "budget"
     t.datetime "deadline"
     t.string   "project_type"
-    t.string   "file_type"
-    t.string   "logo_type"
-    t.text     "color"
-    t.string   "used_for"
+    t.string   "file_type",    :default => "ai, png"
+    t.string   "logo_type",    :default => "illustrative,iconic,textual"
+    t.text     "color",        :default => "Any color that look good for this design"
+    t.string   "used_for",     :default => "Not specified"
     t.string   "status",       :default => "open"
     t.integer  "employer_id"
     t.datetime "created_at"

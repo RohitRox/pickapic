@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-     @submissions = @project.submissions.all
+    @submissions = @project.submissions.order('rating desc')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }

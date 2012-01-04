@@ -5,7 +5,7 @@ class SubmissionsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @submission = @project.submissions.new(params[:submission])
-    
+    @submission.designer = current_designer
     respond_to do |format|
       if @submission.save
         format.html { redirect_to @project, notice: 'Your logo was successfully submitted.' }
