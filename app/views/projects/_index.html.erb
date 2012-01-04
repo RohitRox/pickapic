@@ -9,7 +9,7 @@
   <% @projects.each do |project| %>
   <tr>
     <td><h3><%=link_to project.title,project_path(project) %></h3><p><%= project.description.truncate(150) %></p></td>
-    <td>34</td>
+    <td><%= project.submissions.size%></td>
     <td><%= project.budget %></td>
     <td><%= project.deadline %></td>
   </tr>

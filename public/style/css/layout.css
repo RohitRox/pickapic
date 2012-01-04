@@ -570,3 +570,16 @@ a.rating:hover{
   width:92px !important;
   text-align: center;
 }
+#inbox_tab a{
+  position: relative;
+}
+#inbox_tab b{
+  background: url(../../images/tooltip.png) no-repeat center;
+      color: #FFFFFF;
+      padding: 0 4px !important;
+      position: absolute;
+      right: -32px;
+      top: -43px;
+      min-width: 100px;
+      height:48px;
+}

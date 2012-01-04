@@ -47,6 +47,8 @@
   </ul>
 
   </li>
-  <li class="right_nav"><a href="#"><%=image_tag "inbox.png",:height=>'24',:width=>'24'%></a></li>
+  <li class="right_nav" id="inbox_tab"><a href="<%=messages_path%>"><%=image_tag "inbox.png",:height=>'24',:width=>'24'%>
+    <% if @message_number!=nil %><% if @message_number > 0 %> <b> <%=@message_number %> New Messages</b><% end %><% end %>
+    </a></li>
 </ul>
 

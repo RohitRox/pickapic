@@ -9,6 +9,7 @@ class Designer < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username
   validates :username, :presence => true
   has_many :submissions
+  has_many :messages
 end
 
 

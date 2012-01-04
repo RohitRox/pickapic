@@ -1,6 +1,9 @@
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
+include ApplicationHelper
+before_filter :get_messages
+  
   def index
     @projects = Project.all
     respond_to do |format|

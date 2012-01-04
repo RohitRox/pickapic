@@ -10,6 +10,7 @@ class Employer < ActiveRecord::Base
   
   has_many :projects
   has_many :comments
+  has_many :messages
   
   
 end

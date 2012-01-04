@@ -12,6 +12,8 @@ Pickapic::Application.routes.draw do
  
   resources :home 
   
+  resources :messages
+  
   devise_for :designers do
     match '/designer' => "designer#index", :as => :designer_root
   end

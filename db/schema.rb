@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120104080233) do
+ActiveRecord::Schema.define(:version => 20120104084241) do
 
   create_table "comments", :force => true do |t|
     t.text     "context"
@@ -66,6 +66,20 @@ ActiveRecord::Schema.define(:version => 20120104080233) do
 
   add_index "employers", ["email"], :name => "index_employers_on_email", :unique => true
   add_index "employers", ["reset_password_token"], :name => "index_employers_on_reset_password_token", :unique => true
+
+  create_table "messages", :force => true do |t|
+    t.text     "content"
+    t.integer  "to"
+    t.integer  "from"
+    t.boolean  "state",       :default => false
+    t.integer  "employer_id"
+    t.integer  "designer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["designer_id"], :name => "index_messages_on_designer_id"
+  add_index "messages", ["employer_id"], :name => "index_messages_on_employer_id"
 
   create_table "projects", :force => true do |t|
     t.string   "title"
