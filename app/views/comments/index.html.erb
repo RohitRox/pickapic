@@ -2,32 +2,47 @@
 <div class="clear"></div>
 <h3>Submitted By: <%=@submission.designer.username%></h3>
 <br />
+<div id="original_holder">
 <%= image_tag @submission.screenshot.url(:original) %>
+<% if @submission.approve == true%>
+  <img src="/images/rewarded.png" class="rewarded" height="80" width="80">
+<% end %>
+</div>
+<div class="clear"></div>
 <br />
-<% if @submission.project.status == "open" %>
-<%=link_to "Reward This Design",submission_reward_path(@submission) ,:class=>"button",:method=>:put,:remote=>true%>
+<% if @submission.project.employer == current_employer && @submission.project.status != "Rewarded" %>
+  <div id="reward_holder">
+  <%=link_to "Reward This Design",submission_reward_path(@submission) ,:id=>"reward_button",:class=>"button",:method=>:put,:remote=>true%>
+  </div>
 <% elsif @submission.approve == true %>
-<p id="notice">This is the rewarded design</p>
+  <p id="notice">This is the rewarded design</p>
 <% end %>
 <hr />
+
 <% @comments.each do |comment| %>
-<h3><%=comment.employer.username%> :</h3>
-<p><%=comment.context%></p>
+  <h3><%=comment.employer.username if comment.employer != nil%> 
+  <%=comment.designer.username if comment.designer != nil%>
+  :</h3>
+  <p><%=comment.context%></p>
 <% end %>
 <br />
 
-<h2>Comment to this submission</h2>
-<div id="comments_form">
-  <%= form_for([@submission, Comment.new]) do |f| %>
-  <div class="field">
-    <%= f.label :context %><br />
-    <%= f.text_area :context%>
+<% if (@submission.project.employer == current_employer || @submission.designer == current_designer) && @submission.project.status != "Rewarded" %>
+  <h2>Comment to this submission</h2>
+  <div id="comments_form">
+    <%= form_for([@submission, Comment.new]) do |f| %>
+    <div class="field">
+      <%= f.label "Write what you think" %><br />
+      <%= f.text_area :context,:rows=>"6",:cols=>"120"%>
+    </div>
+    <div class="field">
+      <%= f.submit %>
+    </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.submit %>
-  </div>
-  <% end %>
-</div>
+<% elsif @submission.project.status == "Rewarded"  %>
+  <p id="notice">The project is already rewarded and closed. </p>
+<% end %>
 <div class="clear"></div>
 <hr />
 <%= link_to 'Back', root_path %>

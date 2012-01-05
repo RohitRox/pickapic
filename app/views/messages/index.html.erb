@@ -1,8 +1,8 @@
-<h2>Alerts</h2>
-<ul>
-<li>
+<h2>Messages</h2>
+<ul id="message_list">
   <% @messages.each do |msg|%>
+  <li>
   <%=raw msg.content%>
+  </li>
   <% end %>
-</li>
 </ul>

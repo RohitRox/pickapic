@@ -10,6 +10,8 @@ class Designer < ActiveRecord::Base
   validates :username, :presence => true
   has_many :submissions
   has_many :messages
+  has_many :comments
+  
 end
 
 

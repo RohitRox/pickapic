@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   
   include ApplicationHelper
-  before_filter :get_messages
+  before_filter :get_messages, :get_user_prestige
   
   def index
   if designer_signed_in?

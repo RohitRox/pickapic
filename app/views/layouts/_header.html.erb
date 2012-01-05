@@ -6,7 +6,8 @@
   <% end %>
 </header>
 <ul id="mainNav">
-  <li><a href="#" class="active">DASHBOARD</a></li> <!-- Use the "active" class for the active menu item  -->
+  <li><a href="<%=root_path %>" class="active">DASHBOARD</a></li> <!-- Use the "active" class for the active menu item  -->
+    <li><a href="<%=projects_path %>" >ALL PROJECTS</a></li>
   <li><a href="#help" rel="facebox">HELP</a></li>
 
   <% if designer_signed_in? %>
@@ -21,12 +22,12 @@
   <li class="active">
   <h4>Employee Login</h4>
   <div class="form_login">
-    <%= form_for(@resource ||= Employer.new, :as => :employer, :url => session_path(:employer)) do |f| %>
+    <%= form_for(@resource ||= Employer.new, :as => :employer, :url => session_path(:employer),:name=>"employer_form") do |f| %>
       <div><%= f.label :email %><br />
       <%= f.email_field :email %></div>
       <div><%= f.label :password %><br />
       <%= f.password_field :password %></div>
-      <div><%= f.submit "Sign in" %></div>
+      <div><%= f.submit "Sign in",:id=>"employer_submit" %></div>
     <% end %>
     <%= link_to "Forgot your password?", new_password_path(Employer.new),:class=>"forgot" %><br />
   </div>
@@ -34,12 +35,12 @@
   <li>
   <h4>Designer Login</h4>
   <div class="form_login">
-    <%= form_for(@resource ||= Designer.new, :as => :designer, :url => session_path(:designer)) do |f| %>
+    <%= form_for(@resource ||= Designer.new, :as => :designer, :url => session_path(:designer),:name=>"designer_form") do |f| %>
       <div><%= f.label :email %><br />
       <%= f.email_field :email %></div>
       <div><%= f.label :password %><br />
       <%= f.password_field :password %></div>
-      <div><%= f.submit "Sign in" %></div>
+      <div><%= f.submit "Sign in", :id=>"designer_submit"  %></div>
     <% end %>
     <%= link_to "Forgot your password?", new_password_path(Designer.new),:class=>"forgot" %>
   </div>

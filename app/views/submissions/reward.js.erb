@@ -1,1 +1,4 @@
-$.facebox("<%=@notice%>");
+$('#reward_holder').html("<%=@notice%>");
+<% if employer_signed_in? %>
+	$("#credit_header").html("<%= current_employer.credit - @submission.project.budget %>")
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120104114024) do
+ActiveRecord::Schema.define(:version => 20120105055555) do
 
   create_table "comments", :force => true do |t|
     t.text     "context"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120104114024) do
     t.integer  "submission_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "designer_id"
   end
 
   add_index "comments", ["employer_id"], :name => "index_comments_on_employer_id"
@@ -69,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20120104114024) do
 
   create_table "messages", :force => true do |t|
     t.text     "content"
-    t.boolean  "state"
+    t.boolean  "state",       :default => false
     t.integer  "employer_id"
     t.integer  "designer_id"
     t.datetime "created_at"

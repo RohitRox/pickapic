@@ -1,6 +1,6 @@
 class EmployerController < ActionController::Base
 include ApplicationHelper
-before_filter :authenticate_employer!, :get_messages
+before_filter :authenticate_employer!, :get_messages, :get_user_prestige, :update_project_status
 layout "application"
 
 def index

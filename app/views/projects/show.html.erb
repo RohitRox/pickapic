@@ -2,26 +2,28 @@
 <div class="float_right deadline_right">
 <% if get_project_state(@project) %>
 <img src="/images/deadlineIcon.jpg" width="32" height="32" alt="deadline">
-<b> <%=distance_of_time_in_words(@project.deadline,Time.now) %></b>
+  <b> <%=distance_of_time_in_words(@project.deadline,Time.now) %> Left </b>
+<% elsif @project.status == "Rewarded" %>
+  <p id="notice" class="float_right">The logo for this project is already rewarded and the project is closed.</p>
 <% else %>
-<p id="notice" class="float_right">The logo for this project is already rewarded and the project is closed.</p>
+  <p id="notice" class="float_right">The project is closed and waiting for reward.</p>
 <% end %>
 </div>
 <div class="clear"></div>
 <br />
 <div class="project_info">
   <a href="#" class="button float_left" id="show_brief">Brief</a>
-  <% if get_project_state(@project) %>
-  <% if designer_signed_in? %>
+  <% if designer_signed_in? && get_project_state(@project) %>
+  <div class="clear"></div>
+  <h3>Submit Your Logo</h3>
   <div id="submit_logo">
     <%=form_for([@project, Submission.new],:html=>{ :multipart => true }) do |form| %>
     <%= form.file_field :screenshot %>
     <div class="actions">
       <%= form.submit %>
     </div>
+    <% end %>
   </div>
-  <% end %>
-  <% end %>
   <% end %>
 
   <div class="float_right vital_info">
@@ -33,32 +35,37 @@
 </div>
 <div class="clear"></div>
 
-  <div id="briefing">
-    <%=render "brief"%>
-  </div><!--briefing -->
+<div id="briefing">
+  <%=render "brief"%>
+</div><!--briefing -->
 
-  <div class="clear"></div>
+<div class="clear"></div>
 
-  <% if @project.status=="Rewarded"%>
-   <h2>Rewarded Design Design:</h2>
-  <br />
-  <div id="project_files">
-    <%@rewarded = @project.submissions.where(:approve=>true) %>
-    <%@rewarded.each do |logo| %>
-     <%= image_tag logo.screenshot.url(:medium),:class=>"rewarded_logo" %>
-     <% end %>
+<% if @project.status=="Rewarded" %>
+<h2>Rewarded Design:</h2>
+<br />
+<div id="project_files">
+  <%@rewarded = @project.submissions.where(:approve=>true) %>
+  <%@rewarded.each do |logo| %>
+  <div id="original_holder">
+    <%= image_tag logo.screenshot.url(:original),:class=>"rewarded_logo" %>
+
+    <img src="/images/rewarded.png" class="rewarded" height="80" width="80">
+
   </div>
   <% end %>
+</div>
+<% end %>
+<div class="clear"></div>
+
+<h2>Submitted Designs:</h2>
+<br />
+<div id="project_files">
+  <%=render "gallery"%>
+</div>
 
 
-  <h2>Submitted Designs:</h2>
-  <br />
-  <div id="project_files">
-    <%=render "gallery"%>
-  </div>
-
-
-  <div class="clear"></div>
-  <hr />
-  <%= link_to 'Back', root_path %>
+<div class="clear"></div>
+<hr />
+<%= link_to 'Back', root_path %>
 

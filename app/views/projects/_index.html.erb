@@ -8,10 +8,20 @@
 
   <% @projects.each do |project| %>
   <tr>
-    <td><h3><%=link_to project.title,project_path(project) %></h3><p><%= project.description.truncate(150) %></p></td>
+    <td>
+      <% if project.status == "Rewarded" %>
+      <img src="/images/rewards_icon.png" height="32" width="24" />
+      <% end %>
+    <h3><%=link_to project.title,project_path(project) %></h3><p><%= project.description.truncate(150) %></p></td>
     <td><%= project.submissions.size%></td>
     <td><%= project.budget %></td>
-    <td><%=distance_of_time_in_words(project.deadline,Time.now) %></td>
+    <td>
+		  <% if project.status == "open" %>
+				<%= distance_of_time_in_words(project.deadline,Time.now) %>
+			<% else %>
+				<%= project.status %>
+			<% end %>
+    </td>
   </tr>
   <% end %>
 </table>
