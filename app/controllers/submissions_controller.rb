@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
 
   include ApplicationHelper
+  before_filter :authenticate_access
   before_filter :authenticate_designer!,:except=>[:rating, :reward]
   before_filter :get_messages, :get_user_prestige
 

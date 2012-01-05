@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   
   include ApplicationHelper
+  before_filter :authenticate_access
   before_filter :get_messages, :get_user_prestige
   
   def index

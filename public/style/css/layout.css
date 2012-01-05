@@ -627,3 +627,14 @@ a.rating:hover{
   color: #09c;
   border:1px solid #09c;
 }
+a#trigger_more{
+  color: #999999;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 4px;
+  padding: 2px 8px;
+  border: 1px solid;
+}
+a#trigger_more:hover{
+  color:#000;
+}
