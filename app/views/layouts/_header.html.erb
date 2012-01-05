@@ -11,9 +11,9 @@
   <li><a href="#help" rel="facebox">HELP</a></li>
 
   <% if designer_signed_in? %>
-    <li class="right_nav"><%= link_to "LOG OUT", destroy_designer_session_path, :method => 'delete' %>
+    <li class="right_nav"><%= link_to "LOG OUT", destroy_designer_session_path, :method => 'delete' ,:title=>"Log Out"%>
   <% elsif employer_signed_in? %>
-    <li class="right_nav"><%= link_to "LOG OUT", destroy_employer_session_path, :method => 'delete' %>
+    <li class="right_nav"><%= link_to "LOG OUT", destroy_employer_session_path, :method => 'delete',:title=>"Log Out" %>
   <% else %>
     <li class="right_nav" id="login_show"><a href="#">LOG IN</a>
   <% end %>

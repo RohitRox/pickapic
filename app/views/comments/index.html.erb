@@ -20,7 +20,7 @@
 <hr />
 
 <% @comments.each do |comment| %>
-  <h3><%=comment.employer.username if comment.employer != nil%> 
+  <h3><%=comment.employer.username if comment.employer != nil%>
   <%=comment.designer.username if comment.designer != nil%>
   :</h3>
   <p><%=comment.context%></p>
@@ -45,5 +45,5 @@
 <% end %>
 <div class="clear"></div>
 <hr />
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back', project_path(@submission.project) %>
 

@@ -1,10 +1,17 @@
-<% if  @project.project_type == "public" %>
+<% if  @project.project_type == "public" || @project.employer == current_employer %>
+<% if @project.submissions.size >0 %>
+<%=render "filter_links" %>
 <ul id="project_list">
-  <%i=1%>
+  <%@i=1%>
   <% @project.submissions.each do |submission|%>
-  <li>
-    <div class="logo_header"><span class="float_right"><a href="<%=submission_comments_path(submission)%>"><b><%=i%></b></a></span><span class="float_left">
-      <a href="<%=submission_comments_path(submission)%>"><b><%= submission.comments.size %>&nbsp;</b>Comments</span></a>
+  <li class="<%='rated' if submission.rating!=nil%> <%='unrated' if submission.rating==nil%> <%='commented' if submission.comments.size > 0%>
+   <%='uncommented' if submission.comments.size < 1%>" >
+
+    <div class="logo_header">
+    <span class="float_right"><a href="<%=submission_comments_path(submission)%>"><b><%=@i%></b></a></span>
+    <span class="float_left">
+      <a href="<%=submission_comments_path(submission)%>"><b><%= submission.comments.size %>&nbsp;</b>Comments</a>
+      </span>
     </div>
     <div class="logo_img"><a href="<%=submission.screenshot.url(:original,false)%>" rel="facebox">
       <%= image_tag submission.screenshot.url(:medium),:width=>"220",:height=>"150",:class=>"project_logo" %>
@@ -31,10 +38,13 @@
       </span>
       <span class="float_left"><%= submission.designer.username %> </span></div>
     </li>
-    <% i=i+1 %>
+    <% @i+=1 %>
     <% end %>
 
   </ul>
+  <% else %>
+  <p id="notice">No Designs for this project submitted yet !</p>
+  <% end %>
 <% else %>
 <p id="notice">This is a private project !</p>
 <% end %>

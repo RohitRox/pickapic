@@ -14,7 +14,9 @@
       <% if project.status == "Rewarded" %>
       <img src="/images/rewards_icon.png" height="32" width="24" />
       <% end %>
-      <h3><%=link_to project.title,project_path(project) %></h3><p><%= project.description.truncate(150) %></p></td>
+      <h3><%=link_to project.title,project_path(project),:title=>project.description.truncate(80),:class=>"project-info"%></h3>
+      <p class="<%=project.project_type%>"><%=project.project_type%></p>
+      </td>
       <td><%= project.submissions.size%></td>
       <td><%= project.budget %></td>
       <td>
@@ -29,5 +31,4 @@
   </table>
 
   <br />
-
 

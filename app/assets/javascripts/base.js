@@ -41,4 +41,25 @@ $(document).ready(
         $("#project_more_details").slideToggle();
       });
 
+	 $('.project-info').tipTip({defaultPosition:"right"});
+
+	var $container = $('#project_list');
+// initialize isotope
+$container.isotope({
+layoutMode : 'fitRows'
 });
+
+// filter items when filter link is clicked
+$('#filters a').click(function(){
+  var selector = $(this).attr('data-filter');
+  $container.isotope({ filter: selector });
+  return false;
+});
+
+$('#filters a').click(function(){
+	$(this).parent().parent().find('.active').removeClass('active');
+	$(this).addClass('active');
+});
+
+});
+

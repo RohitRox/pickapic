@@ -2,7 +2,8 @@
 <ul id="message_list">
   <% @messages.each do |msg|%>
   <li>
-  <%=raw msg.content%>
+  <%=raw msg.content%> <span class="float_right">  <%=msg.created_at%> </span>
   </li>
   <% end %>
 </ul>
+

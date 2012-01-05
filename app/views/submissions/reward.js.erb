@@ -1,4 +1,6 @@
 $('#reward_holder').html("<%=@notice%>");
+$.facebox("You have rewarded this project !!");
 <% if employer_signed_in? %>
 	$("#credit_header").html("<%= current_employer.credit - @submission.project.budget %>")
 <% end %>
+
