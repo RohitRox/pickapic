@@ -11,10 +11,11 @@ Pickapic::Application.routes.draw do
     resources :comments
   end
  
-  resources :home 
+  resources :home, :only => [:index] 
   
-  resources :messages
-  
+  resources :messages, :only => [:index] 
+   
+   match '/messages/show_all' => "messages#show_all", :as => :show_all
   devise_for :designers do
     match '/designer' => "designer#index", :as => :designer_root
   end
