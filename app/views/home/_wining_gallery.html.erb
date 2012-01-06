@@ -1,0 +1,13 @@
+<ul id="project_list">
+  <% @rewarded_submission.each do |rewarded| %>
+  <li>
+    <div class="logo_header"><%= rewarded.project.title %><span class="float_right"><%= rewarded.project.budget %> Rewarded</span></div>
+    <div class="logo_img"><a href="<%= rewarded.screenshot.url(:original,false)%>" rel="facebox">
+      <%= image_tag rewarded.screenshot.url(:medium),:width=>"220",:height=>"150",:class=>"project_logo" %>
+      <%=image_tag "Glass.png",:class=>"magnify" %></a>
+    </div>
+    <div class="logo_footer">
+      <span class="float_left"><img src="/images/rewards_icon.png" height="32" width="24" /><%= rewarded.designer.username %></span></div>
+    </li>
+    <% end %>
+  </ul>

@@ -9,27 +9,21 @@
 <br /><br />
 <h1>Recent Wining Designs</h1>
 <br /><br />
-<ul id="project_list">
-  <li>
-    <div class="logo_header">Bonjoo Logo<span class="float_right">$202.00 Rewarded</span></div>
-    <div class="logo_img"><a href="/images/sample.jpg" rel="facebox"><img src="/images/sample.jpg" width="220" class="project_logo">
-      <%=image_tag "Glass.png",:class=>"magnify" %></a>
-    </div>
-    <div class="logo_footer">
-      <span class="float_left"><img src="/images/rewards_icon.png" height="32" width="24" />SproutDesigner</span></div>
-    </li>
-  </ul>
 
-  <div class="clear"></div>
-  <br /><br />
-  <h1>Designers Welcome !  Design &amp; Earn</h1><br />
-  <%= link_to "Sign Up For Free", new_designer_registration_path, :class => "button" %>
-  <div class="clear"></div>
-  <hr />
-  <h1>Statistics</h1>
-  <ol class="steps_list">
-    <li>	&#x2714; <b>300</b> Active Designers</li>
-    <li>	&#x2714; <b>1230</b> Open Projects To Date</li>
-    <li>	&#x2714; <b>$3202</b> Currently On Offer</li>
-  </ol>
+<%= render 'wining_gallery'%>
+
+
+<div class="clear"></div>
+<br /><br />
+<h1>Designers Welcome !  Design &amp; Earn</h1><br />
+<%= link_to "Sign Up For Free", new_designer_registration_path, :class => "button" %>
+<div class="clear"></div>
+<hr />
+<h1>Statistics</h1>
+<ol class="steps_list">
+  <li>	&#x2714; <b><%= @designers %></b> Designers</li>
+  <li>	&#x2714; <b><%= @open_project_size %></b> Open Projects</li>
+  <li>	&#x2714; <b>$<%= @total_open_offer %></b> Currently On Offer</li>
+  <li>	&#x2714; <b>$<%= @payout %></b> Total Payouts</li>
+</ol>
 
