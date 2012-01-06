@@ -29,9 +29,9 @@ module ApplicationHelper
   end
   
   def employer_prestige
-  	if current_employer.projects.size <= 10
+  	if current_employer.projects.size < 5
   		@prestige = "Newbie"
-  	elsif current_employer.projects.size > 10
+  	elsif current_employer.projects.size >= 5
   		@prestige = "Has spent Some time"
   	elsif current_employer.projects.size >30
   		@prestige = "Experienced"
@@ -46,9 +46,9 @@ module ApplicationHelper
   def designer_prestige
   	if current_designer.submissions.size < 10
   		@prestige = "Rookie"
-  	elsif current_designer.submissions.size > 20 && (current_designer.rating > 2.5 && current_designer.rating < 3)
+  	elsif current_designer.submissions.size >= 15 && (current_designer.rating >= 2.0 && current_designer.rating < 3)
   		@prestige = "Dedicated"
-  	elsif current_designer.submissions.size > 20 && (current_designer.rating > 3 && current_designer.rating < 3.5)
+  	elsif current_designer.submissions.size >= 15 && (current_designer.rating > 3 && current_designer.rating < 3.5)
   		@prestige = "Enthusiastic"
   	elsif current_designer.submissions.size > 50 && (current_designer.rating > 3.5 && current_designer.rating < 4)
   		@prestige = "Experienced"

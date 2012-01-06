@@ -3,7 +3,7 @@
 <h3>Submitted By: <%=@submission.designer.username%></h3>
 <br />
 <div id="original_holder">
-<%= image_tag @submission.screenshot.url(:original) %>
+<%= image_tag @submission.screenshot.url(:original),:width=>"540" %>
 <% if @submission.approve == true%>
   <img src="/images/rewarded.png" class="rewarded" height="80" width="80">
 <% end %>

@@ -4,14 +4,14 @@
 <ul id="project_list">
   <%@i=1%>
   <% @project.submissions.each do |submission|%>
-  <li class="<%='rated' if submission.rating!=nil%> <%='unrated' if submission.rating==nil%> <%='commented' if submission.comments.size > 0%>
-   <%='uncommented' if submission.comments.size < 1%>" >
+  <li class="<%='rated' if submission.rating!=nil%> <%='commented' if submission.comments.size > 0%> <%='popular' if submission.rating != nil && submission.comments.size > 0  %>" >
 
     <div class="logo_header">
-    <span class="float_right"><a href="<%=submission_comments_path(submission)%>"><b><%=@i%></b></a></span>
-    <span class="float_left">
-      <a href="<%=submission_comments_path(submission)%>"><b><%= submission.comments.size %>&nbsp;</b>Comments</a>
-      </span>
+      
+        <a href="<%=submission_comments_path(submission)%>" class="float_right"><b><%=@i%></b></a>
+   
+        <a href="<%=submission_comments_path(submission)%>" class="float_left"><b><%= submission.comments.size %>&nbsp;</b>Comments</a>
+
     </div>
     <div class="logo_img"><a href="<%=submission.screenshot.url(:original,false)%>" rel="facebox">
       <%= image_tag submission.screenshot.url(:medium),:width=>"220",:height=>"150",:class=>"project_logo" %>
@@ -38,7 +38,7 @@
       </span>
       <span class="float_left"><%= submission.designer.username %> </span></div>
     </li>
-    <% @i+=1 %>
+    <% @i=@i+1 %>
     <% end %>
 
   </ul>

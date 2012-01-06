@@ -1,4 +1,6 @@
 <h2 class="float_left"> <%= @project.title %></h2>
+<div class="clear"></div><br />
+<h4 class="float_left">By:&nbsp;<%= @project.employer.username %></h4>
 <div class="float_right deadline_right">
 <% if get_project_state(@project) %>
 <img src="/images/deadlineIcon.jpg" width="32" height="32" alt="deadline">
@@ -49,10 +51,9 @@
   <%@rewarded.each do |logo| %>
   <div id="original_holder">
     <%= image_tag logo.screenshot.url(:original),:class=>"rewarded_logo" %>
-
     <img src="/images/rewarded.png" class="rewarded" height="80" width="80">
-
-  </div>
+  </div><br />
+  <h3>By:&nbsp;<%= logo.designer.username %></h3>
   <% end %>
 </div>
 <% end %>

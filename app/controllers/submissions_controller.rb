@@ -26,7 +26,7 @@ class SubmissionsController < ApplicationController
       @submission = @project.submissions.find(params[:submission_id])
       @submission.rating = params[:rate_id]
       @designer = @submission.designer
-      @designer.rating = ( @designer.rating + @submission.rating.to_f )/@designer.submissions.size
+      @designer.rating = get_rating(@designer)
       @submission.save
       @designer.messages.create(:content=>"Your work has been rated a "+@submission.rating.to_s+" Star for <a href='"+ project_path(@project) +"'>"+@project.title+"</a>")
       @designer.save
@@ -62,6 +62,17 @@ class SubmissionsController < ApplicationController
       end
     end
 
+  end
+  
+  private
+  
+  def get_rating(designer)
+    rating = 0
+    designer.submissions.each do |s|
+      s.rating = 0 if s.rating == nil
+      rating += s.rating
+    end
+    rating/designer.submissions.size
   end
 
 end
