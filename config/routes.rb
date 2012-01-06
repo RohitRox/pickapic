@@ -1,7 +1,6 @@
 Pickapic::Application.routes.draw do
   
-  
-  resources :projects do
+  resources :projects, :except => [:destroy] do
     resources :submissions 
   end
   

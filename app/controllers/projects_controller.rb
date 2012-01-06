@@ -37,7 +37,12 @@ before_filter :get_messages, :get_user_prestige
 
   # GET /projects/1/edit
   def edit
-    @project = Project.find(params[:id])
+     @project = Project.find(params[:id])
+    if @project.employer == current_employer && @project.status == "open"
+     true 
+    else
+      redirect_to @project,:alert => "You Are Not The Auhtor of This Project"
+    end
   end
 
   # POST /projects
@@ -79,15 +84,5 @@ before_filter :get_messages, :get_user_prestige
     end
   end
 
-  # DELETE /projects/1
-  # DELETE /projects/1.json
-  def destroy
-    @project = Project.find(params[:id])
-    @project.destroy
-
-    respond_to do |format|
-      format.html { redirect_to projects_url }
-      format.json { head :ok }
-    end
-  end
+ 
 end

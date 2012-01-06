@@ -50,7 +50,7 @@
   <%@rewarded = @project.submissions.where(:approve=>true) %>
   <%@rewarded.each do |logo| %>
   <div id="original_holder">
-    <%= image_tag logo.screenshot.url(:original),:class=>"rewarded_logo" %>
+    <%= image_tag logo.screenshot.url(:original),:class=>"rewarded_logo",:width=>"540" %>
     <img src="/images/rewarded.png" class="rewarded" height="80" width="80">
   </div><br />
   <h3>By:&nbsp;<%= logo.designer.username %></h3>
@@ -68,5 +68,8 @@
 
 <div class="clear"></div>
 <hr />
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back', root_path %> 
+<% if @project.employer == current_employer && @project.status == "open" %>
+<%= link_to 'Edit', edit_project_path(@project) %> 
+<% end %>
 
