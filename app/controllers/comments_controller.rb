@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   include ApplicationHelper
   before_filter :authenticate_access
   before_filter :get_messages, :get_user_prestige
+  before_filter :auth_private_projects, :only => [:index]
 
   def index
     @submission = Submission.find(params[:submission_id])
@@ -27,6 +28,18 @@ class CommentsController < ApplicationController
         format.html { redirect_to submission_comments_path(@submission), alert: 'File was either empty or not supported format !'  }
       end
     end
+  end
+  
+  private
+  
+  def auth_private_projects
+    @submission = Submission.find(params[:submission_id])
+    if @submission.project.project_type == "public" || (@submission.project.project_type == "private" && (@submission.project.employer == current_employer || @submission.designer == current_designer))
+      true
+    else
+       redirect_to project_path(@submission.project), alert: 'Sorry this is the private project'
+    end
+    
   end
 
 
